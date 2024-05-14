@@ -16,7 +16,7 @@ void printGrade()
             cout << "Invalid input. Marks should be between 0 and 100." << endl;
     }
 
-    // Check the grade based on valid marks
+    // Check the grade based on valid marks.
     if (marks >= 90)
         cout << "Grade is : A";
 
