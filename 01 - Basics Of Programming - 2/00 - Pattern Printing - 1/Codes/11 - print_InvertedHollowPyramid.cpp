@@ -11,7 +11,7 @@ void printHollowPyramid(int n){
         }
         for (int star = 0; star < (n - row); star++) {
 
-            // Print star in first and last column of every row
+            // Print star in first and last column of every row.
             if(star == 0 || star == (n - row - 1))
                 cout << "* ";
 
