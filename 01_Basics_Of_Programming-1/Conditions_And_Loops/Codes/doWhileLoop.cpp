@@ -9,8 +9,7 @@ int main(){
 
     int start = 1;                  //Declaring starting number
 
-    do
-    {
+    do{
        if (start % 2 == 0)          //Condition to check even number
        {
         cout << start << "  ";      //Printing the number, if above "If Condition" become true
