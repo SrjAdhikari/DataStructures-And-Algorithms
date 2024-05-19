@@ -2,6 +2,7 @@
 using namespace std;
 
 void printDiamond(int totalRow){
+    
     int n = totalRow / 2;
 
     // Upper Half -> Full Pyramid Code
