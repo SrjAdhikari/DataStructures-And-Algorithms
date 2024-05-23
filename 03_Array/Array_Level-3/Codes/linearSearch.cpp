@@ -12,8 +12,10 @@ bool linearSearch(int arr[3][3], int rowSize, int colSize, int target){
     return false;
 }
 
-// Time Complexity = O(rowSize * colSize)
-// Space Complexity = O(1)
+//* *********************************************
+    //* Time Complexity = O(rowSize * colSize)
+    //* Space Complexity = O(1)
+//* *********************************************
 
 
 int main(){

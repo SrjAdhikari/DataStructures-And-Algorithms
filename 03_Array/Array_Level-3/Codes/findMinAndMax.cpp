@@ -15,8 +15,10 @@ int findMinElement(int arr[3][3], int rowSize, int colSize){
     return minValue;
 }
 
-// Time Complexity = O(rowSize * colSize)
-// Space Complexity = O(1)
+//* *********************************************
+    //* Time Complexity = O(rowSize * colSize)
+    //* Space Complexity = O(1)
+//* *********************************************
 
 
 // Function to find maximum element in array
@@ -33,8 +35,10 @@ int findMaxElement(int arr[3][3], int rowSize, int colSize){
     return maxValue;
 }
 
-// Time Complexity = O(rowSize * colSize)
-// Space Complexity = O(1)
+//* *********************************************
+    //* Time Complexity = O(rowSize * colSize)
+    //* Space Complexity = O(1)
+//* *********************************************
 
 
 int main(){
