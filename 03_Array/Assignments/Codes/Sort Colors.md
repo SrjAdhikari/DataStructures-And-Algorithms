@@ -32,18 +32,38 @@ Output: [0,1,2]
 
 ```Cpp
 
+class Solution {
+public:
+    // Function to sort an array of colors represented as 0, 1, and 2 (red, white, and blue)
+    void sortColors(vector<int>& nums) {
 
+        int n = nums.size();                        // Get the size of the array
+        int index = 0, left = 0, right = n - 1;     // Initialize three pointers: index, left, and right
 
-Time Complexity =
-Space Complexity =
-```
+        // Iterate through the array until index meets or exceeds right
+        while(index <= right){
+            // If the current element is 0 (red), swap it with the element at the left pointer
+            // and increment both left and index pointers
+            if(nums[index] == 0){
+                swap(nums[index], nums[left]);
+                left++, index++;
+            }
 
-## Solution 2
+            // If the current element is 2 (blue), swap it with the element at the right pointer
+            // and decrement the right pointer
+            else if(nums[index] == 2){
+                swap(nums[index], nums[right]);
+                right--;
+            }
+            
+            // If the current element is 1 (white), simply move to the next element (increment index)
+            else {
+                index++;
+            }
+        } 
+    }
+};
 
-```Cpp
-
-
-
-Time Complexity =
-Space Complexity =
+Time Complexity = O(n)
+Space Complexity = O(1)
 ```

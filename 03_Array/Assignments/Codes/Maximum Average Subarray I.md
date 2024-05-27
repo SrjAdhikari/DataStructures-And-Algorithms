@@ -30,19 +30,75 @@ Output: 5.00000
 ## Solution 1
 
 ```Cpp
+Brute Force Approach : 
 
+class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int k) {
+        int maxSum = INT_MIN;   // Initialize maxSum to the smallest integer value
+        int i = 0, j = k - 1;   // Initialize pointers for the sliding window
 
+        // Iterate over the array using a sliding window approach
+        while (j < nums.size()) {
+            
+            int sum = 0; // Initialize the sum of the current window
 
-Time Complexity =
-Space Complexity =
+            // Calculate the sum of elements in the current window
+            for (int l = i; l <= j; l++) {
+                sum += nums[l];
+            }
+
+            // Update maxSum if the current window sum is greater
+            maxSum = max(maxSum, sum);
+
+            // Move the sliding window forward
+            i++, j++;
+        }
+
+        // Calculate the maximum average by dividing maxSum by k
+        double maxAvg = maxSum / (double) k;
+        return maxAvg;  // Return the maximum average
+    }
+};
+
+Time Complexity = O(n^2)
+Space Complexity = O(1)
 ```
 
 ## Solution 2
 
 ```Cpp
+Sliding Window Approach : 
 
+class Solution {
+public:
+    double findMaxAverage(vector<int>& nums, int& k) {
+        int start = 0, end = k - 1;     // Initialize two pointers to mark the start and end of the subarray
+        int sum = 0;                    // Variable to store the sum of current subarray
 
+        // Calculate the sum of the first subarray of length k
+        for(int i = start; i <= end; i++)
+            sum += nums[i];
 
-Time Complexity =
-Space Complexity =
+        int maxSum = sum;   // Initialize maxSum with the sum of the first subarray
+        end++;              // Move end to the next element after the initial subarray
+
+        // Slide the window and find the maximum sum of subarrays of length k
+        while(end < nums.size()){
+            // Subtract the element at start and add the element at end to update the sum
+            sum -= nums[start++];
+            sum += nums[end++];
+            
+            // Update maxSum to store the maximum sum found so far
+            maxSum = max(maxSum, sum);
+        }
+
+        // Calculate the maximum average by dividing maxSum by k
+        double maxAvg = maxSum / (double) k;
+        return maxAvg;  // Return the maximum average
+    } 
+};
+
+Time Complexity = O(n)
+Space Complexity = O(1)
 ```

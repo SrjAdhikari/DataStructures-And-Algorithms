@@ -35,18 +35,40 @@ Expected Auxiliary Space: O(n)
 
 ```Cpp
 
+class Solution {
+public:
+    vector<int> commonElements(int arr1[], int arr2[], int arr3[], int n1, int n2, int n3) {
+        int i = 0;  // Pointer for arr1
+        int j = 0;  // Pointer for arr2
+        int k = 0;  // Pointer for arr3
+        vector<int> result;  // To store common elements
 
+        // Traverse all three arrays while elements are left in each
+        while (i < n1 && j < n2 && k < n3) {
+            // Check if the current elements in all arrays are the same
+            if (arr1[i] == arr2[j] && arr2[j] == arr3[k]) {
+                result.push_back(arr1[i]);  // Add common element to result
 
-Time Complexity =
-Space Complexity =
-```
+                // Move to the next distinct elements to avoid duplicates
+                int currElement = arr1[i];
+                while (i < n1 && arr1[i] == currElement) i++;
+                while (j < n2 && arr2[j] == currElement) j++;
+                while (k < n3 && arr3[k] == currElement) k++;
+            }
+            // If current element in arr1 is smaller, move pointer i to next element
+            else if (arr1[i] < arr2[j])
+                i++;
+            // If current element in arr2 is smaller, move pointer j to next element
+            else if (arr2[j] < arr3[k])
+                j++;
+            // If current element in arr3 is smaller, move pointer k to next element
+            else
+                k++;
+        }
+        return result;  // Return the list of common elements
+    }
+};
 
-## Solution 2
-
-```Cpp
-
-
-
-Time Complexity =
-Space Complexity =
+Time Complexity = O(arr1 + arr2 + arr3)
+Space Complexity = O(arr1)
 ```

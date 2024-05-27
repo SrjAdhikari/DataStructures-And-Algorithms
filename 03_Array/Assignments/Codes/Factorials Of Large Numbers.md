@@ -35,19 +35,35 @@ Expected Auxilliary Space : O(1)
 ## Solution 1
 
 ```Cpp
+class Solution {
+public:
+    vector<int> factorial(int N) {
+        vector<int> ans;  // Vector to store the digits of the factorial
+        ans.push_back(1); // Initialize the vector with the first factorial value (1!)
+        int carry = 0;    // Variable to store the carry during multiplication
 
+        // Loop through numbers from 2 to N to calculate the factorial
+        for (int i = 2; i <= N; i++) {
+            // Multiply each digit in the ans vector by the current number i
+            for (int j = 0; j < ans.size(); j++) {
+                int product = ans[j] * i + carry; // Calculate the product and add carry
+                ans[j] = product % 10;            // Store the last digit of the product in ans
+                carry = product / 10;             // Update the carry
+            }
 
+            // Handle any remaining carry
+            while (carry) {
+                ans.push_back(carry % 10); // Add the last digit of carry to ans
+                carry /= 10;               // Update the carry by removing the last digit
+            }
+        }
 
-Time Complexity =
-Space Complexity =
-```
+        // Reverse the vector to get the digits in the correct order
+        reverse(ans.begin(), ans.end());
+        return ans; // Return the result as a vector of digits
+    }
+};
 
-## Solution 2
-
-```Cpp
-
-
-
-Time Complexity =
-Space Complexity =
+Time Complexity = O(N^2log(N))
+Space Complexity = O(Nlog(N))
 ```
