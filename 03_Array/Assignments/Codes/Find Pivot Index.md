@@ -9,6 +9,7 @@ If the index is on the left edge of the array, then the left sum is `0` because 
 Return the **leftmost pivot index.** If no such index exists, return `-1`.
 
 ### Example 1:
+
 ```plaintext
 Input: nums = [1,7,3,6,5,6]
 Output: 3
@@ -18,7 +19,8 @@ Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
 Right sum = nums[4] + nums[5] = 5 + 6 = 11
 ```
 
-### Example 2 : 
+### Example 2 :
+
 ```plaintext
 Input: nums = [1,2,3]
 Output: -1
@@ -26,7 +28,8 @@ Explanation:
 There is no index that satisfies the conditions in the problem statement.
 ```
 
-### Example 3 : 
+### Example 3 :
+
 ```plaintext
 Input: nums = [2,1,-1]
 Output: 0
@@ -37,11 +40,11 @@ Right sum = nums[1] + nums[2] = 1 + -1 = 0
 ```
 
 ### Constraints:
+
 ```plaintext
 1 <= nums.length <= 104
 -1000 <= nums[i] <= 1000
 ```
-
 
 ## Solution 1
 
@@ -56,7 +59,7 @@ public:
         // Loop to iterate through each elements of the array
         for(int i = 0; i < n; i++){
             int leftSum, rightSum = 0;
-            
+
             // Calculate sum of element to the left
             for(int j = 0; j < i; j++){
                 leftSum += nums[i];
@@ -116,4 +119,36 @@ public:
 
 Time Complexity = O(n) + O(n) + O(n) => O(n)
 Space Complexity = O(n)
+```
+
+## Solution 3
+
+```Cpp
+
+class Solution {
+public:
+    int pivotIndex(vector<int>& nums) {
+
+        int n = nums.size();
+
+        // Calculate the total sum of the array
+        int totalSum = 0;
+        for(int i = 0; i < n; i++){
+            totalSum += nums[i];                                // Sum all elements in the array
+        }
+
+        int prefixSum = 0;                                      // Initialize prefix sum to 0
+        for(int i = 0; i < n; i++){
+            int suffixSum = totalSum - prefixSum - nums[i];     // Calculate suffix sum
+            if(prefixSum == suffixSum){                         // Check if prefix sum is equal to suffix sum
+                return i;                                       // Return the current index if it is a pivot index
+            }
+            prefixSum += nums[i];                               // Update prefix sum
+        }
+        return -1;                                              // Return -1 if no pivot index is found
+    }
+};
+
+Time Complexity = O(n)
+Space Complexity = O(1)
 ```
