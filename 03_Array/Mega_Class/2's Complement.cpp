@@ -31,7 +31,6 @@ vector<int> find2sComplement(vector<int> binary) {
 }
 
 
-
 int main(){
 
     vector<int> binary = {0, 1, 1, 0, 1};
