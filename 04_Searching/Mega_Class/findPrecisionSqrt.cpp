@@ -57,7 +57,6 @@ double myPrecisionSqrt(int num){
 }
 
 
-
 int main() {
     int num = 63;
     double precisionSqrt = myPrecisionSqrt(num);
