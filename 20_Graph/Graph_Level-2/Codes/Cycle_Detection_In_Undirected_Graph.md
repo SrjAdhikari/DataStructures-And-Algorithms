@@ -77,9 +77,8 @@ public:
         vector<bool> visited(V, 0);     // Create a visited array to keep track of visited nodes
         int parent = -1;                // Initialize the parent node as -1 (no parent)
         
-        // Iterate through all the nodes in the graph
+        // Iterate through all the nodes in the graph -> Handle Disconnected Components Of Graph
         for(int node = 0; node < V; node++) {
-
             // If the node is not visited and a cycle is detected from that node
             if(!visited[node] && cycleDetect(node, parent, adj, visited)) {
                 return 1;               // Return true if a cycle is detected
@@ -101,7 +100,47 @@ Using BFS Traversal :
 class Solution {
 public:
 
-    
+    // Helper function to detect a cycle in the graph using BFS
+    bool cycleDetect(int srcNode, vector<int> adj[], vector<int>& visited) {
+        queue<pair<int, int>> q;        // Queue to perform BFS, storing node and its parent
+        int parent = -1;                // Initialize the parent node as -1 (no parent for the source node)
+        
+        visited[srcNode] = 1;           // Mark the source node as visited
+        q.push({srcNode, parent});      // Push the source node and its parent into the queue
+        
+        while (!q.empty()) {
+            int frontNode = q.front().first;        // Get the front node from the queue
+            int parentNode = q.front().second;      // Get the parent of the front node
+            q.pop();                                // Remove the front node from the queue
+            
+            // Traverse all the adjacent nodes of the front node
+            for (auto nbrNode : adj[frontNode]) {
+                if (parentNode == nbrNode)
+                    continue;              // Skip the parent node to avoid false cycle detection
+                
+                if (visited[nbrNode])
+                    return 1;             // If the neighbor node is already visited, a cycle is detected
+                    
+                visited[nbrNode] = 1; // Mark the neighbor node as visited
+                q.push({nbrNode, frontNode});    // Push the neighbor node and its parent into the queue
+            }
+        }
+        return 0;                                // No cycle detected
+    }
+
+    // Function to check if there is a cycle in the graph -> Handle Disconnected Components Of Graph
+    bool isCycle(int V, vector<int> adj[]) {
+
+        vector<int> visited(V, 0);  // Create a visited array to keep track of visited nodes
+        
+        // Iterate through all the nodes in the graph
+        for (int node = 0; node < V; node++) {
+            // If the node is not visited and a cycle is detected from that node
+            if (!visited[node] && cycleDetect(node, adj, visited))
+                return 1;           // Return true if a cycle is detected
+        }
+        return 0;                   // Return false if no cycle is detected
+    }
 };
 
 Time Complexity = O(V + E)
