@@ -1,4 +1,4 @@
-# _`Data Structures and Algorithms (DSA)`_
+# _`Data Structures And Algorithms (DSA)`_
 
 **_Welcome to the Data Structures and Algorithms in C++ repository! This repository contains comprehensive handwritten notes and C++ code for various data structures and algorithms, ranging from basic programming concepts to advanced topics like graphs and dynamic programming._**
 
