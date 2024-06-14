@@ -34,7 +34,7 @@ have finished task 1. So it is impossible.
 You don’t need to read input or print anything. Your task is to complete the function isPossible() which takes the integer N denoting the number of tasks, P denoting the number of prerequisite pairs and prerequisite as input parameters and returns true if it is possible to finish all tasks otherwise returns false. 
 
 ```
-xpected Time Complexity: O(N + P)
+Expected Time Complexity: O(N + P)
 Expected Auxiliary Space: O(N + P)
 ```
 
