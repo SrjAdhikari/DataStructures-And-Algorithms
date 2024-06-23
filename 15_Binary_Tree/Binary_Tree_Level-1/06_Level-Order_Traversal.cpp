@@ -1,3 +1,5 @@
+//* Print all the levels of nodes in a single line.
+
 #include <iostream>
 #include <queue>
 using namespace std;
@@ -52,7 +54,7 @@ void levelOrderTraversal(Node* root) {
 
         // Get the front element of the queue
         Node* frontNode = q.front();
-        
+
         // Remove the front element from the queue
         q.pop();
 
