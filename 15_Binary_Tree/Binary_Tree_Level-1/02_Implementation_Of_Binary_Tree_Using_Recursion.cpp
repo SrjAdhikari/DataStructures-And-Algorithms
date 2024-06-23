@@ -18,6 +18,7 @@ public:
 
 // Function to create a binary tree recursively
 Node* createBinaryTree() {
+    
     int data;
     cin >> data;    // Input the data for the current node
 

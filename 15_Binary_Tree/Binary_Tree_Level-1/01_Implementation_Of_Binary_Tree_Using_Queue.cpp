@@ -17,6 +17,7 @@ public:
 };
 
 int main() {
+    
     int root;       // Variable to store the value of the root node
     cout << "Enter the root node: ";
     cin >> root;    // Input the root node value from the user
