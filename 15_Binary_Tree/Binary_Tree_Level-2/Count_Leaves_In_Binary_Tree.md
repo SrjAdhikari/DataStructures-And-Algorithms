@@ -41,11 +41,6 @@ Expected Space Compelxity : O(h), where h is the height of the binary tree
 
 `1 <= N <= 10^4`
 
-## Solution
-
-````Cpp
-Using BFS Traversal + Topological Sort :
-
 ## Solution 1
 
 ```Cpp
@@ -74,7 +69,7 @@ public:
 
 Time Complexity = O(n)
 Space Complexity = O(n)
-````
+```
 
 ## Solution 2
 
