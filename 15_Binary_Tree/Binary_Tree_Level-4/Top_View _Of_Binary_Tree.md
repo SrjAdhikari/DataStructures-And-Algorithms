@@ -52,6 +52,7 @@ Using Level Order Travesal :
 class Solution {
 public:
     void findPosition(Node* root, int position, int& leftPos, int& rightPos) {
+
         // Base case: If the root is null, return
         if (!root)
             return;
@@ -70,6 +71,7 @@ public:
     // Function to return a list of nodes visible from the top view
     // from left to right in Binary Tree.
     vector<int> topView(Node *root) {
+        
         // Variables to track the leftmost and rightmost positions
         int leftPos = 0, rightPos = 0;
 
@@ -154,7 +156,7 @@ public:
 
     // Helper function to populate the top view of the binary tree
     void topViewHelper(Node* root, int position, vector<int>& ans, vector<int>& level, int currLevel) {
-        
+
         // Base case: If the root is null, return
         if (!root)
             return;
