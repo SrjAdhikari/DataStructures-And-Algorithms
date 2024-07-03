@@ -42,7 +42,6 @@ Output: 1
 ## Solution
 
 ```Cpp
-Using Recursion (Pre-Order Traversal) :
 
 class Solution {
 public:
