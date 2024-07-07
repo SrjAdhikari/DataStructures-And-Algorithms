@@ -218,3 +218,66 @@ public:
 Time Complexity = O(N)
 Space Complexity = O(N)
 ```
+
+## Solution 3
+
+```Cpp
+Using Level Order Travesal & Map: 
+
+class Solution {
+public:
+    vector<int> topView(Node *root) {
+        vector<int> ans;
+
+        // Check if the root is null, if yes, return an empty vector
+        if (root == NULL) 
+            return ans;
+
+        // Declare a map to store the first node's data at each horizontal distance
+        map<int, int> mapping;
+
+        // Declare a queue to perform level order traversal. Each element in the queue
+        // is a pair where the first element is the node and the second element is its 
+        // horizontal distance from the root
+        queue<pair<Node*, int>> q;
+
+        // Push the root node with a horizontal distance of 0 into the queue
+        q.push({root, 0});
+
+        // Continue level order traversal until the queue is empty
+        while (!q.empty()) {
+            // Get the front element of the queue and pop it
+            pair<Node*, int> pair = q.front();
+            q.pop();
+
+            // Get the node and its horizontal distance from the pair
+            Node* front = pair.first;
+            int level = pair.second;
+
+            // Update the mapping with the data of the current node at the given horizontal distance (level). If level already exists in mapping, the existing value is overwritten with the data of the current node. This ensures that the node processed last at each horizontal distance (which will be the bottommost node when viewed from the top) is the one stored in the map.
+            mapping[level] = front->data;
+
+
+            // If the left child exists, push it into the queue with a horizontal 
+            // distance decreased by 1
+            if (front->left)
+                q.push({front->left, level - 1});
+
+            // If the right child exists, push it into the queue with a horizontal 
+            // distance increased by 1
+            if (front->right)
+                q.push({front->right, level + 1});
+        }
+
+        // Fill the ans vector with the top view nodes in the correct order
+        for (auto node : mapping) {
+            ans.push_back(node.second);
+        }
+
+        return ans;
+    }
+};
+
+Time Complexity = O(NlogN)
+Space Complexity = O(N)
+```
