@@ -57,45 +57,44 @@ of the tree is 8 1 7 10 5 10 6 6.
 
 class Solution {
 public:
-    // Function to perform pre-order traversal of a binary tree iteratively
+    // Function to perform an pre-order traversal of the binary tree
     vector<int> preOrder(Node* root) {
 
-        // Stack to hold nodes during traversal
-        stack<Node*> st;
-        
-        // Push the root node onto the stack
-        st.push(root);
-        
-        // Vector to store the result of the pre-order traversal
-        vector<int> ans;
-        
-        // Loop until the stack is empty
-        while (!st.empty()) {
-            
-            // Get the top node from the stack
-            Node* top = st.top();
-            
-            // Remove the top node from the stack
-            st.pop();
-            
-            // Add the data of the top node to the result
-            ans.push_back(top->data);
-            
-            // Push the right child of the top node onto the stack (if it exists)
-            // We push the right child first so that the left child is processed first
-            if (top->right)
-                st.push(top->right);
-            
-            // Push the left child of the top node onto the stack (if it exists)
-            if (top->left)
-                st.push(top->left);
+        vector<int> ans; // Initialize an empty vector to store the pre-order traversal results
+
+        // Traverse the tree until the root becomes NULL (indicating no more nodes)
+        while (root) {
+            if (!root->left) {                  // If the current node has no left child:
+                ans.push_back(root->data);      // Add the current node's data to the pre-order list
+                root = root->right;             // Move to the right child for further traversal
+            } 
+            else {
+                Node* current = root->left;         // Find the predecessor (pre-order predecessor) of the current node
+                while (current->right && current->right != root) {
+                    // Traverse down the right subtree of the left child until we reach:
+                    // - A node with a NULL right child (predecessor)
+                    // - The current node itself (avoiding infinite loops)
+                    current = current->right;
+                }
+
+                // If the rightmost node's right child is NULL, establish a temporary link back to the current node.
+                if (!current->right) {
+                    ans.push_back(root->data);      // Pre-order processing: Add the current node's data to the pre-order list
+                    current->right = root;          // Create a temporary link between the predecessor's right child and the current node
+                    root = root->left;              // Move to the left child for further traversal
+                } 
+                else {
+                    // If the rightmost node's right child points back to the current node,
+                    // this means we have completed the traversal of the left subtree.
+                    current->right = NULL;          // Remove the temporary link.
+                    root = root->right;             // Move to the right child for further traversal
+                }
+            }
         }
-        
-        // Return the result of the pre-order traversal
-        return ans;
+        return ans;         // Return the vector containing the pre-order traversal results
     }
 };
 
 Time Complexity = O(N)
-Space Complexity = O(N)
+Space Complexity = O(1)
 ```
