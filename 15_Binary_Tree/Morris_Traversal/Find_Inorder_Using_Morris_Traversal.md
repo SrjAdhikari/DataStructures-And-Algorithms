@@ -49,8 +49,6 @@ of the tree is 1 7 10 8 6 10 5 6.
         i. Remove the link.
         ii. Print root node.
         iii. Go to right subtree.
-
-
 ```
 
 ## Solution
