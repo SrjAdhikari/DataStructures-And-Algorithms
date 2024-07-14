@@ -86,7 +86,7 @@ public:
             }
             // Case 3: The node has only a left child.
             else if (root->left && (!root->right)) {
-                Node* temp = root->right;   // Store the right child.
+                Node* temp = root->left;   // Store the left child.
                 delete root;                // Deallocate memory for the node -> Delete the current node.
                 return temp;                // Return the right child to update the parent pointer.
             } 
