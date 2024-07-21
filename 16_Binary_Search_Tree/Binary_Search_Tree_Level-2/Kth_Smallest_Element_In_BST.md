@@ -18,11 +18,6 @@ Input: root = [5,3,6,2,4,null,null,1], k = 3
 Output: 3
 ```
 
-```
-Expected Time Complexity: O(N)
-Expected Auxiliary Space: O(H) where H is max recursion stack of height H at a given time.
-```
-
 ### Constraints
 - The number of nodes in the tree is `n`.
 - `1 <= k <= n <= 10^4`
