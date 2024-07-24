@@ -107,23 +107,23 @@ class Solution {
 
         // Case: If both children exist, recursively find largest BST in subtrees
         else {
-        NodeInfo* leftSubtree = findLargestBST(root->left, totalSize);
-        NodeInfo* rightSubtree = findLargestBST(root->right, totalSize);
+            NodeInfo* leftSubtree = findLargestBST(root->left, totalSize);
+            NodeInfo* rightSubtree = findLargestBST(root->right, totalSize);
 
-        // Check if both subtrees are BSTs and their values are within valid range for current node to be root of a BST
-        if (leftSubtree->isBST && rightSubtree->isBST && leftSubtree->max < root->data && rightSubtree->min > root->data) {
-            NodeInfo* head = new NodeInfo(root->data);
-            head->size += leftSubtree->size + rightSubtree->size + 1;   // Sum sizes of both subtrees
-            head->min = leftSubtree->min;                               // Update minimum value
-            head->max = rightSubtree->max;                              // Update maximum value
-            totalSize = max(totalSize, head->size);                     // Update the total size
-            return head;
-        } 
-        // If not a BST, mark left subtree is not a BST and return
-        else {
-            leftSubtree->isBST = 0;     // Mark the subtree as not a BST
-            return leftSubtree;         // Return the left subtree info (could also return rightSubtree)
-        }
+            // Check if both subtrees are BSTs and their values are within valid range for current node to be root of a BST
+            if (leftSubtree->isBST && rightSubtree->isBST && leftSubtree->max < root->data && rightSubtree->min > root->data) {
+                NodeInfo* head = new NodeInfo(root->data);
+                head->size += leftSubtree->size + rightSubtree->size;       // Sum sizes of both subtrees
+                head->min = leftSubtree->min;                               // Update minimum value
+                head->max = rightSubtree->max;                              // Update maximum value
+                totalSize = max(totalSize, head->size);                     // Update the total size
+                return head;
+            } 
+            // If not a BST, mark left subtree is not a BST and return
+            else {
+                leftSubtree->isBST = 0;     // Mark the subtree as not a BST
+                return leftSubtree;         // Return the left subtree info (could also return rightSubtree)
+            }
         }
     }
 
