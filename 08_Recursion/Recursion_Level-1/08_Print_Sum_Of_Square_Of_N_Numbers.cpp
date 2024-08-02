@@ -1,10 +1,13 @@
 #include <iostream>
 using namespace std;
 
-int printSquareSum (int n) {
-    if(n == 1) {
+// Function to calculate the sum of squares from n numbers
+int printSquareSum(int n) {
+    // Base case: if n is 1, return 1 (square of 1)
+    if (n == 1) {
         return 1;
     }
+    // Recursive case: return the square of n plus the sum of squares of numbers less than n
     return n * n + printSquareSum(n - 1);
 }
 
