@@ -31,7 +31,7 @@ Output: 3
 -   `1 <= s.length <= 1000`
 -   `s[i]` is either `'('` or `')'`
 
-## Solution
+## Solution 1
 
 ```Cpp
 class Solution {
@@ -72,4 +72,49 @@ public:
 
 Time Complexity = O(n)
 Space Complexity = O(n)
+```
+
+## Solution 2
+
+```Cpp
+class Solution {
+public:
+    int minAddToMakeValid(string s) {
+        int openBracketCount = 0;   // Keeps track of the number of unmatched open brackets '('
+        int count = 0;              // Keeps track of the number of unmatched close brackets ')'
+
+        // Iterate through each character in the string 's'
+        for (int i = 0; i < s.size(); i++) {
+            // Check if the character is ')'
+            if (s[i] == '(') {
+                // This indicates the start of a new open bracket that needs to be matched.
+                // Increase `openBracketCount` to account for this unmatched open bracket.
+                openBracketCount++;
+            }
+            // Else the character is ')'
+            else {
+                // Check if there are unmatched open brackets to pair with the current close bracket
+                if (openBracketCount == 0) {
+                    // There are no unmatched open brackets available to pair with this close bracket,
+                    // so this close bracket is considered unmatched. Increment `count` to reflect this.
+                    count++;
+                }
+                // If `openBracketCount` is greater than 0
+                else {
+                    // There are unmatched open brackets available. This close bracket can pair with one of them,
+                    // so decrease `openBracketCount` by 1 to reflect this matching.
+                    openBracketCount--;
+                }
+            }
+        }
+
+        // The total number of additions needed to balance the string is the sum of:
+        // 1. `openBracketCount` will hold the number of unmatched open brackets.
+        // 2. `count` will hold the number of unmatched close brackets.
+        return count + openBracketCount;
+    }
+};
+
+Time Complexity = O(n)
+Space Complexity = O(1)
 ```
