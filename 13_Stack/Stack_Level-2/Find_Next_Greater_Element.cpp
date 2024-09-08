@@ -92,7 +92,7 @@ vector<int> nextGreaterElement2(int arr[], int n) {
         // While the stack is not empty and the element at the top of the stack (arr[st.top()])
         // is smaller than the current element (arr[i]), pop the stack.
         // This means that arr[i] is greater than arr[st.top()], so we discard arr[st.top()] from the stack.
-        while(!st.empty() && arr[st.top()] <= arr[i]) {
+        while(!st.empty() && arr[st.top()] < arr[i]) {
             st.pop();
         }
 
