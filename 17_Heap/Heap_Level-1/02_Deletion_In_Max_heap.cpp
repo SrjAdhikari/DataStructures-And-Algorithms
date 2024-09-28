@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class Heap {
+class MaxHeap {
 public:
     int* arr;         // Pointer to an array that represents the heap.
     int size;         // Current size of the heap (number of elements in the heap).
