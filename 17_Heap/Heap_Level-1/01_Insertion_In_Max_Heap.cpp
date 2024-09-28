@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class Heap {
+class MaxHeap {
 public:
     int* arr;         // Pointer to an array that represents the heap.
     int size;         // Current size of the heap (number of elements in the heap).
@@ -59,7 +59,7 @@ public:
 
 int main() {
     // Create a heap of capacity 5.
-    Heap h(5);
+    MaxHeap h(5);
 
     // Insert values into the heap and print after each series of insertions.
     h.insertion(10);
