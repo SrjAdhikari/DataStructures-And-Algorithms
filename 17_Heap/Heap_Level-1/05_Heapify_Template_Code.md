@@ -1,7 +1,7 @@
 # Heapify / Heapification Template Code
 
-
 ### Heapify In Max-Heap
+
 ```Cpp
 
 // Function to heapify an array
@@ -11,13 +11,12 @@ void heapify(int arr[], int index, int size) {
     int right = 2 * index + 2;    // Right child index.
 
     // Check if the left child exists and is larger than the current node.
-    if(left < size && arr[largest] > arr[left])
+    if(left < size && arr[left] > arr[largest])
         // Update largest to be the left child.
         largest = left;
-    
+
     // Check if the right child exists and is larger than the largest node so far.
-    if(right < size && arr[largest] > arr[right])
-        // Update largest to be the right child.
+    if(right < size && arr[right] > arr[largest])
         largest = right;
 
     // If the largest is not the current node, swap with the largest child & continue heapifying.
@@ -32,26 +31,27 @@ void heapify(int arr[], int index, int size) {
     }
 }
 
-Time Complexity = O(logN)
+Time Complexity = O(N)
 Space Complexity = O(logN)
 ```
 
 ### Heapify In Min-Heap
+
 ```Cpp
 
 // Function to heapify an array
 void heapify(int arr[], int index, int size) {
-    int largest = index;          // Assume the current node is the smallest.
+    int smallest = index;          // Assume the current node is the smallest.
     int left = 2 * index + 1;     // Left child index.
     int right = 2 * index + 2;    // Right child index.
 
     // Check if the left child exists and is smaller than the current node.
-    if(left < size && arr[smallest] < arr[left])
+    if(left < size && arr[left] < arr[smallest])
         // Update smallest to be the left child.
         smallest = left;
-    
+
     // Check if the right child exists and is smaller than the smallest node so far
-    if(index < size && arr[smallest] < arr[right])
+    if(right < size && arr[right] < arr[smallest])
         // Update smallest to be the right child.
         smallest = right;
 
@@ -67,6 +67,6 @@ void heapify(int arr[], int index, int size) {
     }
 }
 
-Time Complexity = O(logN)
+Time Complexity = O(N)
 Space Complexity = O(logN)
 ```
