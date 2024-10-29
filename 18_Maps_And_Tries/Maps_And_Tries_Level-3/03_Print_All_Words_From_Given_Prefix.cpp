@@ -61,10 +61,10 @@ void insert(TrieNode *root, string word) {
 }
 
 // Function to store string below the last character of the given prefix
-void storeBelowChar(TrieNode* root, vector<string>& ans, string& input, string& prefix) {
-    // If the current node marks the end of a word, add the complete word (prefix + input) to the answer list
+void storeBelowChar(TrieNode* root, vector<string>& ans, string output) {
+    // If the current node marks the end of a word, add the current constructed word to the answer list
     if(root->isEnd == true) {
-        ans.push_back(prefix + input);
+        ans.push_back(output);
     }
 
     // Traverse all possible children nodes (from 'a' to 'z')
@@ -77,32 +77,32 @@ void storeBelowChar(TrieNode* root, vector<string>& ans, string& input, string& 
 
         // If there is a valid child node, append the character to the input and continue the traversal
         if(child != NULL) {
-            // Add the character to the current input string
-            input.push_back(ch);
+            // Add the character to the current output string
+            output.push_back(ch);
 
             // Recursive call to explore the next level
-            storeBelowChar(child, ans, input, prefix);
+            storeBelowChar(child, ans, output);
 
             // Backtrack to explore other branches, removing the last character
-            input.pop_back();
+            output.pop_back();
         }
     }
 }
 
 // Function to find all words that start with a given prefix
-void findPrefixString(TrieNode* root, string input, vector<string>& ans, string& prefix) {
+void findPrefixString(TrieNode* root, vector<string>& ans, string prefix) {
     // Base case: If the input prefix has been fully traversed, collect all words from this Trie node onward
-    if(input.length() == 0) {
+    if(prefix.length() == 0) {
         // Mark this node as the last character node of the prefix
         TrieNode* lastChar = root;
 
         // Collect all words below this node
-        storeBelowChar(lastChar, ans, input, prefix);
+        storeBelowChar(lastChar, ans, prefix);
         return;
     }
 
     // Get the next character in the input prefix and calculate its corresponding index in the Trie
-    char ch = input[0];
+    char ch = prefix[0];
     int index = ch - 'a';
     TrieNode* child;
 
@@ -117,7 +117,7 @@ void findPrefixString(TrieNode* root, string input, vector<string>& ans, string&
     }
 
     // Recursive call to continue searching the next character in the prefix
-    findPrefixString(child, input.substr(1), ans, prefix);
+    findPrefixString(child, ans, prefix.substr(1));
 }
 
 int main() {
@@ -135,16 +135,15 @@ int main() {
     insert(root, "lovely");
 
     // Define the prefix to search for and initialize the prefix as input
-    string input = "co";
-    string prefix = input;
+    string prefix = "co";
     vector<string> words; 
 
     // Call the function to find all words starting with the given prefix
-    findPrefixString(root, input, words, prefix);
+    findPrefixString(root, words, prefix);
 
     // Output all collected words with the specified prefix
     for (auto ch : words) {
-        cout << ch << " ";
+        cout << prefix + ch << " ";
     }
     cout << endl;
 
