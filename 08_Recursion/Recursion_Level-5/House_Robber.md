@@ -34,16 +34,6 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 ```Cpp
 class Solution {
 public:
-    /*
-    * This function recursively determines the maximum amount of money that can be robbed.
-    *
-    * Parameters:
-    * - nums: A vector of integers where each element represents the amount of money in each house.
-    * - index: The current house being considered for robbing.
-    *
-    * Returns:
-    * - The maximum amount of money that can be robbed starting from the current house index.
-    */
     int robAmount(vector<int>& nums, int index) {
         // Base case: If the current index is out of bounds, return 0 (no money can be robbed)
         if (index >= nums.size()) {
@@ -61,15 +51,6 @@ public:
         return max(robHouse, skipHouse);
     }
 
-    /*
-    * This function initiates the process to find the maximum amount of money that can be robbed.
-    *
-    * Parameters:
-    * - nums: A vector of integers where each element represents the amount of money in each house.
-    *
-    * Returns:
-    * - The maximum amount of money that can be robbed from the series of houses.
-    */
     int rob(vector<int>& nums) {
         // Start the recursion from the first house (index 0)
         return robAmount(nums, 0);
