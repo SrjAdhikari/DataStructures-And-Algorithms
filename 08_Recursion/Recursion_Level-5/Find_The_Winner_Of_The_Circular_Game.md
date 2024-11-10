@@ -50,20 +50,6 @@ Brute-Force Approach :
 
 class Solution {
 public:
-    /*
-    * This function recursively determines the winner of the game by simulating the process
-    * of eliminating every k-th person in a circle until only one person remains.
-    *
-    * Parameters:
-    * - visited: A boolean vector where each element indicates if the person at that position is eliminated (true) or not (false).
-    * - n: Total number of people in the circle.
-    * - index: Current index to start counting from.
-    * - leftPerson: Number of people still remaining in the game.
-    * - k: The count to determine which person will be eliminated.
-    *
-    * Returns:
-    * - The index of the winning person.
-    */
     int findWinner(vector<bool>& visited, int n, int index, int leftPerson, int k) {
         // Base case: If only one person is left, return their index as the winner
         if (leftPerson == 1) {
@@ -96,16 +82,6 @@ public:
         return findWinner(visited, n, index, leftPerson - 1, k);
     }
 
-    /*
-    * This function initializes the game and starts the process of finding the winner.
-    *
-    * Parameters:
-    * - n: Total number of people in the circle.
-    * - k: The count to determine which person will be eliminated.
-    *
-    * Returns:
-    * - The 1-based index of the winning person.
-    */
     int findTheWinner(int n, int k) {
         // Initialize the visited vector with all false (no one is eliminated at the start)
         vector<bool> visited(n, false);
