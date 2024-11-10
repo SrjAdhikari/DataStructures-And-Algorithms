@@ -41,18 +41,7 @@ Output: 0
 ```Cpp
 class Solution {
 public:
-    /*
-    * This function recursively finds the minimum number of coins needed to make up the given amount.
-    *
-    * Parameters:
-    * - coins: A vector of integers representing different coin denominations.
-    * - amount: The total amount of money we need to make up.
-    *
-    * Returns:
-    * - The minimum number of coins needed to make up the amount, or -1 if it's not possible.
-    *
-    * The function explores all possible combinations of coins and returns the minimum number of coins required.
-    */
+    // This function Recursive function to finds the minimum number of coins needed to make up the given amount.
     int findMinCoins(vector<int>& coins, int amount) {
         // Base case: If amount is 0, no coins are needed
         if(amount == 0) {
@@ -86,12 +75,6 @@ public:
         return minCoins == INT_MAX ? -1 : minCoins;
     }
 
-    /*
-    * This function initiates the recursive process to find the minimum number of coins needed.
-    *
-    * Returns:
-    * - The minimum number of coins needed to make up the amount, or -1 if it's not possible.
-    */
     int coinChange(vector<int>& coins, int amount) {
         return findMinCoins(coins, amount);
     }
