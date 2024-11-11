@@ -50,15 +50,6 @@ Expected Auxiliary Space: O(n).
 ```Cpp
 class Solution {
 public:
-    /*
-    * This function recursively solves the Tower of Hanoi problem.
-    * It moves `n` disks from the source rod to the destination rod using a helper rod.
-    * Parameters:
-    * - n: The number of disks to move
-    * - src: The source rod from which disks are to be moved
-    * - help: The helper rod used for temporary storage of disks
-    * - dest: The destination rod where disks are to be moved
-    */
     void towerOfHanoi(int n, int src, int help, int dest) {
         // Base case: If there's only one disk, move it directly from source to destination
         if (n == 1) {
@@ -77,19 +68,6 @@ public:
         towerOfHanoi(n - 1, help, src, dest);
     }
 
-    /*
-    * This function is a wrapper for the Tower of Hanoi solution.
-    * It prints the steps to solve the problem and returns the total number of moves required.
-    *
-    * Parameters:
-    * - n: The number of disks to move
-    * - from: The source rod number
-    * - to: The destination rod number
-    * - aux: The helper rod number
-    *
-    * Returns:
-    * - The total number of moves required to solve the problem, which is (2^n) - 1
-    */
     long long toh(int n, int from, int to, int aux) {
         // Solve the Tower of Hanoi problem
         towerOfHanoi(n, from, aux, to);
